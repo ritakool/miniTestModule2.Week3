@@ -19,20 +19,30 @@ public class QuanLyNhanSu {
     public void themNhanSu(NhanVien nhanVien) {
         this.NhanVien.add(nhanVien);
     }
+    public void xoaNhanSu(String id) {
+        NhanVien.removeIf(nhanVien -> nhanVien.getId().equals(id));
+    }
+    public void suaNhanSu (String id, NhanVien nhanVien) {
+        int index = NhanVien.stream().filter(nv -> nv.getId().equals(id)).findFirst().map(nv -> NhanVien.indexOf(nv)).orElse(-1);
+        NhanVien.set(index,nhanVien);
+    }
     public double tbLuong() {
-        double sum = 0;
-        int count = 0;
-        for (NhanVien nv : NhanVien) {
-            if (nv instanceof NhanVienPartTime) {
-               sum += ((NhanVienPartTime) nv).tinhLuong();
-               count++;
-            }
-            if (nv instanceof NhanVienFullTime) {
-                sum += ((NhanVienFullTime) nv).tinhLuong();
-                count++;
-            }
-        }
-        return sum / count;
+//        double sum = 0;
+//        int count = 0;
+//        for (NhanVien nv : NhanVien) {
+//            if (nv instanceof NhanVienPartTime) {
+//               sum += ((NhanVienPartTime) nv).tinhLuong();
+//               count++;
+//            }
+//            if (nv instanceof NhanVienFullTime) {
+//                sum += ((NhanVienFullTime) nv).tinhLuong();
+//                count++;
+//            }
+//        }
+//        return sum / count;
+        return NhanVien.stream()
+                .mapToDouble(nv -> nv.tinhLuong())
+                .average().getAsDouble();
     }
     public void lietKe() {
         for (NhanVien nv : NhanVien) {
@@ -45,22 +55,26 @@ public class QuanLyNhanSu {
     }
     public double luongNVPartTime() {
         double sum = 0;
-        for (NhanVien nv : NhanVien) {
-            if (nv instanceof NhanVienPartTime) {
-                sum += ((NhanVienPartTime) nv).tinhLuong();
-            }
-        }
-        return sum;
+//        for (NhanVien nv : NhanVien) {
+//            if (nv instanceof NhanVienPartTime) {
+//                sum += ((NhanVienPartTime) nv).tinhLuong();
+//            }
+//        }
+//        return sum;
+        double tongLuong = NhanVien.stream()
+                .filter(nv -> nv instanceof NhanVienPartTime)
+                .mapToDouble(nv -> nv.tinhLuong()).sum();
+        return tongLuong;
     }
-//    public double phuongThuc = NhanVien.stream().filter(nv -> nv instanceof NhanVienPartTime).mapToDouble(nv -> ((NhanVienPartTime) nv).tinhLuong()).sum();
     public void sapXepNVFullTime () {
         ArrayList<NhanVienFullTime> sx = new ArrayList<>();
         for (NhanVien nv : NhanVien) {
             if (nv instanceof NhanVienFullTime) {
-                sx.add((NhanVienFullTime) nv);
+                NhanVienFullTime nhanVienFullTime = (NhanVienFullTime) nv;
+                sx.add(nhanVienFullTime);
             }
         }
-        Collections.sort(sx,Comparator.comparingDouble(NhanVienFullTime::tinhLuong));
+        sx.sort(Comparator.comparingDouble(NhanVienFullTime::tinhLuong));
         sx.forEach(System.out::println);
     }
 }

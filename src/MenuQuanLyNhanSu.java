@@ -11,13 +11,24 @@ public class MenuQuanLyNhanSu {
         boolean running = true;
         while (running) {
             System.out.println("====== MENU QUẢN LÝ NHÂN SỰ ======");
-            System.out.println("1. Thêm nhân viên");
-            System.out.println("2. Tính trung bình lương");
-            System.out.println("3. Liệt kê nhân viên lương thấp hơn trung bình");
-            System.out.println("4. Tính tổng lương nhân viên thời vụ");
-            System.out.println("5. Sắp xếp nhân viên toàn thời gian theo lương");
-            System.out.println("6. Hiển thị toàn bộ nhân viên");
-            System.out.println("7. Thoát chương trình");
+//            System.out.println("1. Thêm nhân viên");
+//            System.out.println("2. Tính trung bình lương");
+//            System.out.println("3. Liệt kê nhân viên lương thấp hơn trung bình");
+//            System.out.println("4. Tính tổng lương nhân viên thời vụ");
+//            System.out.println("5. Sắp xếp nhân viên toàn thời gian theo lương");
+//            System.out.println("6. Hiển thị toàn bộ nhân viên");
+//            System.out.println("7. Thoát chương trình");
+//            System.out.print("Mời bạn chọn chức năng: ");
+            System.out.println(
+                    """
+                        1. Thêm nhân viên
+                        2. Tính trung bình lương
+                        3. Liệt kê nhân viên lương thấp hơn trung bình
+                        4. Tính tổng lương nhân viên thời vụ
+                        5. Sắp xếp nhân viên toàn thời gian theo lương
+                        6. Hiển thị toàn bộ nhân viên
+                        7. Thoát chương trình
+                        """);
             System.out.print("Mời bạn chọn chức năng: ");
 
             int choice = scanner.nextInt();
