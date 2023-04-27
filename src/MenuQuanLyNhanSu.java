@@ -51,7 +51,7 @@ public class MenuQuanLyNhanSu {
                     sapXepNhanVienToanThoiGianTheoLuong();
                     break;
                 case 6:
-                    toanBoNhanVien();
+//                    toanBoNhanVien();
                     break;
                 case 7:
                     running = false;

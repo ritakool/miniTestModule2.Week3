@@ -74,7 +74,8 @@ public class QuanLyNhanSu {
                 sx.add(nhanVienFullTime);
             }
         }
-        sx.sort(Comparator.comparingDouble(NhanVienFullTime::tinhLuong));
+        Collections.sort(sx,Comparator.comparingDouble(NhanVienFullTime::tinhLuong));
+//        sx.sort(Comparator.comparingDouble(NhanVienFullTime::tinhLuong));
         sx.forEach(System.out::println);
     }
 }
